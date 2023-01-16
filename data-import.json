@@ -1,0 +1,20 @@
+{
+    "version": "3",
+    "services": {
+        "import": {
+            "container_name": "osm",
+            "image": "overv/openstreetmap-tile-server",
+            "environment": [
+                "FLAT_NODES=enabled"
+            ],
+            "volumes": [
+                "osm-data:/data/database/",
+                "./azerbaijan-latest.osm.pbf:/data/region.osm.pbf"
+            ],
+            "command": "import"
+        }
+    },
+    "volumes": {
+        "osm-data": {}
+    }
+}

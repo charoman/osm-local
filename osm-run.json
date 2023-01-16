@@ -1,0 +1,25 @@
+{
+    "version": "3",
+    "services": {
+        "import": {
+            "container_name": "osm",
+            "image": "overv/openstreetmap-tile-server",
+            "environment": [
+                "ALLOW_CORS=enabled",
+                "THREADS=8",
+                "OSM2PGSQL_EXTRA_ARGS=-C 4096",
+                "AUTOVACUUM=off"
+            ],
+            "ports":["9080:80"],
+            "volumes": [
+                "osm-data:/data/database/",
+                "osm-tiles:/data/tiles/"
+            ],
+            "command": "run"
+        }
+    },
+    "volumes": {
+        "osm-data": {},
+        "osm-tiles":{}
+    }
+}
